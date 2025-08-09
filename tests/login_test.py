@@ -2,6 +2,7 @@ from pages.login_page import LoginPage
 import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+import os
 
 
 class LoginTest(unittest.TestCase):
@@ -16,7 +17,12 @@ class LoginTest(unittest.TestCase):
 
         self.driver = webdriver.Chrome(options=chrome_options)
         self.driver.maximize_window()
-        self.driver.get("http://localhost:80/sign-in")
+        # at the top of your file
+        WEKAN_URL = os.getenv("WEKAN_URL", "http://localhost:80")
+
+        # in setUp()
+        self.driver.get(f"{WEKAN_URL}/sign-in")
+        #self.driver.get("http://localhost:80/sign-in")
         self.login_page = LoginPage(self.driver)
 
     def test_valid_login(self):
