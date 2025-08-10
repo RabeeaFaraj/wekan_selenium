@@ -1,3 +1,4 @@
+import tempfile
 from pages.login_page import LoginPage
 import unittest
 from selenium import webdriver
@@ -10,22 +11,25 @@ class LoginTest(unittest.TestCase):
        
         # chrome_options = Options()
         # chrome_options.add_argument("--start-maximized")  # avoids maximize_window bug
-       
         # self.driver = webdriver.Chrome(options=chrome_options)
-
         # WEKAN_URL = os.getenv("WEKAN_URL", "http://localhost:80")
         # self.driver.get(f"{WEKAN_URL}/sign-in")
         # self.login_page = LoginPage(self.driver)
+
         chrome_options = Options()
-        chrome_options.add_argument("--start-maximized")  # avoids maximize_window bug
-        # chrome_options.add_argument("--headless=new")  # if you want headless
-        # chrome_options.add_argument("--no-sandbox")
-        # chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--start-maximized")  
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument(f"--user-data-dir={tempfile.mkdtemp()}")  # unique temp profile
+
+        if os.getenv("CI"):  # Running in GitHub Actions
+            chrome_options.add_argument("--headless=new")
 
         self.driver = webdriver.Chrome(options=chrome_options)
 
         WEKAN_URL = os.getenv("WEKAN_URL", "http://localhost:80")
         self.driver.get(f"{WEKAN_URL}/sign-in")
+
         self.login_page = LoginPage(self.driver)
 
 
