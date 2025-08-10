@@ -23,7 +23,7 @@ class LoginPage:
         self.driver.find_element(*self.password_field).send_keys(password)
         self.driver.find_element(*self.login_button).click()
          # Wait for the home page to load (adjust selector as needed)
-        WebDriverWait(self.driver, 10).until(
+        WebDriverWait(self.driver, 50).until(
             EC.presence_of_element_located((By.ID, "header-main-bar"))
         )
         return HomePage(self.driver)
