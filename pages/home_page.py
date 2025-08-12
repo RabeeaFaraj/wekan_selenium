@@ -7,7 +7,7 @@ import time
 class HomePage:
     def __init__(self, driver):
         self.driver = driver
-        self.board = (By.CSS_SELECTOR, "a[title='Add Board']")
+        self.board = (By.CSS_SELECTOR, "a[title='add-board']")
         self.name_board = (By.CLASS_NAME, "js-new-board-title")
         self.create_button = (By.CSS_SELECTOR, "input[value='Create']")
 
