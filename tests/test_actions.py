@@ -18,7 +18,7 @@ class LoginTest(unittest.TestCase):
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument(f"--user-data-dir={tempfile.mkdtemp()}")
 
-        if os.getenv("CI"):
+        if os.getenv("CI","False") == "true":
             chrome_options.add_argument("--headless=new")
 
         self.driver = webdriver.Chrome(options=chrome_options)
