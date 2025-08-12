@@ -46,9 +46,10 @@ class HomePage:
     def add_board(self, board_name):
         # Example method to add a board
         # Update selector as needed for your app
-        self.driver.find_element(*self.board).click()
+        self.driver.find_element(*self.board).click() 
         self.driver.find_element(*self.name_board).send_keys(board_name)
         self.driver.find_element(*self.create_button).click()
+        
 
         # self.driver.find_element(By.ID, "board-name-input").send_keys(board_name)
         # self.driver.find_element(By.ID, "create-board-button").click()
