@@ -25,6 +25,7 @@ class LoginTest(unittest.TestCase):
         self.driver.implicitly_wait(2)  # מוגדר פעם אחת בלבד
 
         WEKAN_URL = os.getenv("WEKAN_URL", "http://localhost:80")
+        #WEKAN_URL="http://54.75.42.178:80"
         self.driver.get(f"{WEKAN_URL}/sign-in")
         self.login_page = LoginPage(self.driver)
 
