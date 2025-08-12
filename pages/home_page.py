@@ -14,14 +14,14 @@ class HomePage:
     def add_board(self, board_name):
         # Example method to add a board
         # Update selector as needed for your app
-        time.sleep(10)
+        WebDriverWait(self.driver, 30).until(
+            EC.presence_of_element_located(self.board)
+        )        
         self.driver.find_element(*self.board).click() 
         self.driver.find_element(*self.name_board).send_keys(board_name)
         self.driver.find_element(*self.create_button).click()
 
-        # WebDriverWait(self.driver, 50).until(
-        #     EC.presence_of_element_located((By.ID, "header-main-bar"))
-        # )
+        
         return BoardPage(self.driver)
         # WebDriverWait(self.driver, 100).until(
         #     EC.presence_of_element_located((By.XPATH, f"//h1[text()='{board_name}']"))
