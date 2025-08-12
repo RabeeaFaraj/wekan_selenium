@@ -10,22 +10,20 @@ class LoginPage:
         self.email_field = (By.ID, "at-field-username_and_email")
         self.password_field = (By.ID, "at-field-password")
         self.login_button = (By.ID, "at-btn")  
-        try:
-            # Wait for either the auth dialog OR the email field to appear
-            WebDriverWait(self.driver, 60).until(
-                EC.any_of(
-                    EC.presence_of_element_located((By.CLASS_NAME, "auth-dialog")),
-                    EC.presence_of_element_located(self.email_field)
-                )
-            )
-        except:
-            # Capture page source for debugging in CI
-            raise Exception("Login page not loaded. Check WEKAN_URL or network access.")
-        # Correct way to check for class presence
         # try:
-        #     self.driver.find_element(By.CLASS_NAME, "auth-dialog")
+        #     # Wait for either the auth dialog OR the email field to appear
+        #     WebDriverWait(self.driver, 60).until(
+        #         EC.presence_of_element_located((By.CLASS_NAME, "auth-dialog")),
+        #     )
+            
         # except:
-        #     raise Exception("Login page not loaded successfully")
+        #     # Capture page source for debugging in CI
+        #     raise Exception("Login page not loaded. Check WEKAN_URL or network access.")
+        # Correct way to check for class presence
+        try:
+            self.driver.find_element(By.CLASS_NAME, "auth-dialog")
+        except:
+            raise Exception("Login page not loaded successfully")
         
 
     def login_as_valid_user(self, username, password):
