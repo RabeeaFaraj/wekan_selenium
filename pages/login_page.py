@@ -10,7 +10,7 @@ class LoginPage:
         self.email_field = (By.ID, "at-field-username_and_email")
         self.password_field = (By.ID, "at-field-password")
         self.login_button = (By.ID, "at-btn")  
-        WebDriverWait(self.driver, 30).until(
+        WebDriverWait(self.driver, 50).until(
             EC.presence_of_element_located((By.CLASS_NAME, "auth-dialog"))
         )        
         # Correct way to check for class presence
@@ -25,7 +25,7 @@ class LoginPage:
         self.driver.find_element(*self.password_field).send_keys(password)
         self.driver.find_element(*self.login_button).click()
          # Wait for the home page to load (adjust selector as needed)
-        WebDriverWait(self.driver, 30).until(
+        WebDriverWait(self.driver, 50).until(
             EC.presence_of_element_located((By.ID, "header-main-bar"))
         )
         return HomePage(self.driver)
