@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+from pages.home_page import HomePage
            
 class LoginPage:
     def __init__(self, driver):
@@ -27,33 +28,3 @@ class LoginPage:
         return HomePage(self.driver)
     
 
-class HomePage:
-    def __init__(self, driver):
-        self.driver = driver
-        self.board = (By.CSS_SELECTOR, "a[title='Add Board']")
-        self.name_board = (By.CLASS_NAME, "js-new-board-title")
-        self.create_button = (By.CSS_SELECTOR, "input[value='Create']")
-
-    def is_logged_in_successfully(self):
-        # Example: check for an element only visible after login
-        # Update selector as needed for your app
-        try:
-            self.driver.find_element(By.ID, "header-main-bar")
-            return True
-        except:
-            return False
-
-    def add_board(self, board_name):
-        # Example method to add a board
-        # Update selector as needed for your app
-        self.driver.find_element(*self.board).click() 
-        self.driver.find_element(*self.name_board).send_keys(board_name)
-        self.driver.find_element(*self.create_button).click()
-        
-
-        # self.driver.find_element(By.ID, "board-name-input").send_keys(board_name)
-        # self.driver.find_element(By.ID, "create-board-button").click()
-        # Wait for the new board to be created (adjust selector as needed)
-        # WebDriverWait(self.driver, 100).until(
-        #     EC.presence_of_element_located((By.XPATH, f"//h1[text()='{board_name}']"))
-        # )
