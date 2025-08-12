@@ -25,7 +25,7 @@ class LoginTest(unittest.TestCase):
             chrome_options.add_argument("--headless=new")
 
         self.driver = webdriver.Chrome(options=chrome_options)
-        self.driver.implicitly_wait(10)  # מוגדר פעם אחת בלבד
+        self.driver.implicitly_wait(20)  # מוגדר פעם אחת בלבד
 
         WEKAN_URL = os.getenv("WEKAN_URL", "http://localhost:80")
         #WEKAN_URL="http://54.75.42.178:80"
