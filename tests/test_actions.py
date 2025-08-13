@@ -13,7 +13,7 @@ from pages.board_page import BoardPage
 class LoginTest(unittest.TestCase):
     def setUp(self):
         chrome_options = Options()
-        chrome_options.add_argument("--window-size=800,600")        
+        chrome_options.add_argument("--window-size=1280,800")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--disable-gpu")
