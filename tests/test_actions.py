@@ -13,16 +13,18 @@ from pages.board_page import BoardPage
 class LoginTest(unittest.TestCase):
     def setUp(self):
         chrome_options = Options()
-        chrome_options.add_argument("--start-maximized")
+        chrome_options.add_argument("--window-size=800,600")        
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-software-rasterizer")    
         chrome_options.add_argument(f"--user-data-dir={tempfile.mkdtemp()}")
 
         if os.getenv("CI","False") == "true":
             chrome_options.add_argument("--headless=new")
 
         self.driver = webdriver.Chrome(options=chrome_options)
-        self.driver.implicitly_wait(10)  # מוגדר פעם אחת בלבד
+        self.driver.implicitly_wait(20)  # מוגדר פעם אחת בלבד
 
         WEKAN_URL = os.getenv("WEKAN_URL", "http://localhost:80")
         self.driver.get(f"{WEKAN_URL}/sign-in")
@@ -46,7 +48,6 @@ class LoginTest(unittest.TestCase):
         )
         self.assertIsInstance(add_board, BoardPage, "add_board is not an instance of BoardPage")
         print("\nBoard added successfully, board page loaded\n")
-
 
     def tearDown(self):
         self.driver.quit()
