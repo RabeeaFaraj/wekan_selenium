@@ -33,7 +33,7 @@ class LoginTest(unittest.TestCase):
     def test_valid_login(self):
         homePage = (
             self.login_page
-            .login_as_valid_user("Rabeea.30.03@gmail.com", "30fnhk03")
+            .login_as_valid_user("Rabeea.30.03@gmail.com", "123456789")
         )
         self.assertIsInstance(homePage, HomePage, "home is not an instance of BoardPage")
         print("\nLogin successful, home page loaded\n")
@@ -42,7 +42,7 @@ class LoginTest(unittest.TestCase):
     def test_add_board(self):
         add_board = (
             self.login_page
-            .login_as_valid_user("Rabeea.30.03@gmail.com", "30fnhk03")
+            .login_as_valid_user("Rabeea.30.03@gmail.com", "123456789")
             .add_board("OOP Programming")
         )
         self.assertIsInstance(add_board, BoardPage, "add_board is not an instance of BoardPage")
