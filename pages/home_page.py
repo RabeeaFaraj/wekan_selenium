@@ -13,18 +13,8 @@ class HomePage:
 
     def add_board(self, board_name):
         # Example method to add a board
-        # Update selector as needed for your app
-        add_board_btn= WebDriverWait(self.driver, 60).until(
-            EC.presence_of_element_located(self.board)
-        )        
-        add_board_btn.click() 
+        self.driver.find_element(*self.board).click() 
         self.driver.find_element(*self.name_board).send_keys(board_name)
-        self.driver.find_element(*self.create_button).click()
-        WebDriverWait(self.driver, 60).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR,".swimlane-header.js-open-inlined-form.is-editable.ui-sortable-handle"))
-        )
-        
+        self.driver.find_element(*self.create_button).click() 
         return BoardPage(self.driver)
-        # WebDriverWait(self.driver, 100).until(
-        #     EC.presence_of_element_located((By.XPATH, f"//h1[text()='{board_name}']"))
-        # )
+       
