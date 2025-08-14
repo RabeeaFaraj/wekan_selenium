@@ -40,6 +40,7 @@ class LoginTest(unittest.TestCase):
         print("\nLogin successful, home page loaded\n")
 
 
+
     # def test_add_board(self):
     #     add_board = (
     #         self.login_page
