@@ -13,7 +13,7 @@ from pages.board_page import BoardPage
 class LoginTest(unittest.TestCase):
     def setUp(self):
         chrome_options = Options()
-        chrome_options.add_argument("--window-size=800,600")        
+        chrome_options.add_argument("--window-size=1920,1080")        
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--disable-gpu")
@@ -37,21 +37,20 @@ class LoginTest(unittest.TestCase):
         homePage = (
             self.login_page
             .login_as_valid_user("Rabeea.30.03@gmail.com", "123456789")
-            .login_as_valid_user("Rabeea.30.03@gmail.com", "123456789")
         )
         self.assertIsInstance(homePage, HomePage, "home is not an instance of BoardPage")
         print("\nLogin successful, home page loaded\n")
 
 
 
-    # def test_add_board(self):
-    #     add_board = (
-    #         self.login_page
-    #         .login_as_valid_user("Rabeea.30.03@gmail.com", "123456789")
-    #         .add_board("OOP Programming")
-    #     )
-    #     self.assertIsInstance(add_board, BoardPage, "add_board is not an instance of BoardPage")
-    #     print("\nBoard added successfully, board page loaded\n")
+    def test_add_board(self):
+        add_board = (
+            self.login_page
+            .login_as_valid_user("Rabeea.30.03@gmail.com", "123456789")
+            .add_board("OOP Programming")
+        )
+        self.assertIsInstance(add_board, BoardPage, "add_board is not an instance of BoardPage")
+        print("\nBoard added successfully, board page loaded\n")
     
 
     def tearDown(self):
