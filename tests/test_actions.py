@@ -18,6 +18,8 @@ class LoginTest(unittest.TestCase):
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--disable-software-rasterizer")    
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-software-rasterizer")    
         chrome_options.add_argument(f"--user-data-dir={tempfile.mkdtemp()}")
 
         if os.getenv("CI","False") == "true":
@@ -34,6 +36,7 @@ class LoginTest(unittest.TestCase):
     def test_valid_login(self):
         homePage = (
             self.login_page
+            .login_as_valid_user("Rabeea.30.03@gmail.com", "123456789")
             .login_as_valid_user("Rabeea.30.03@gmail.com", "123456789")
         )
         self.assertIsInstance(homePage, HomePage, "home is not an instance of BoardPage")
