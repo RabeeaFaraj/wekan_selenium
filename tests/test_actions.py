@@ -48,6 +48,7 @@ class LoginTest(unittest.TestCase):
     #     )
     #     self.assertIsInstance(add_board, BoardPage, "add_board is not an instance of BoardPage")
     #     print("\nBoard added successfully, board page loaded\n")
+    
 
     def tearDown(self):
         self.driver.quit()
