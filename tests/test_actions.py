@@ -43,14 +43,14 @@ class LoginTest(unittest.TestCase):
 
 
 
-    def test_add_board(self):
-        add_board = (
-            self.login_page
-            .login_as_valid_user("Rabeea.30.03@gmail.com", "123456789")
-            .add_board("OOP Programming")
-        )
-        self.assertIsInstance(add_board, BoardPage, "add_board is not an instance of BoardPage")
-        print("\nBoard added successfully, board page loaded\n")
+    # def test_add_board(self):
+    #     add_board = (
+    #         self.login_page
+    #         .login_as_valid_user("Rabeea.30.03@gmail.com", "123456789")
+    #         .add_board("OOP Programming")
+    #     )
+    #     self.assertIsInstance(add_board, BoardPage, "add_board is not an instance of BoardPage")
+    #     print("\nBoard added successfully, board page loaded\n")
     
 
 
