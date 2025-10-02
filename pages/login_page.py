@@ -19,10 +19,20 @@ class LoginPage:
         # except:
         #     # Capture page source for debugging in CI
         #     raise Exception("Login page not loaded. Check WEKAN_URL or network access.")
-        # Correct way to check for class presence
+        # Wait for login form elements to be present instead of auth-dialog
         try:
-            self.driver.find_element(By.CLASS_NAME, "auth-dialog")
+            WebDriverWait(self.driver, 10).until(
+                EC.any_of(
+                    EC.presence_of_element_located(self.email_field),
+                    EC.presence_of_element_located(self.password_field),
+                    EC.presence_of_element_located(self.login_button)
+                )
+            )
+            print("✅ Login page loaded successfully")
         except:
+            print(f"❌ Login page validation failed")
+            print(f"🔍 Current URL: {self.driver.current_url}")
+            print(f"📄 Page title: {self.driver.title}")
             raise Exception("Login page not loaded successfully")
         
 
