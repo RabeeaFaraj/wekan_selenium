@@ -14,7 +14,7 @@ class LoginPage:
         # Simple validation - don't fail if elements aren't found immediately
         try:
             WebDriverWait(self.driver, 5).until(
-                EC.presence_of_element_located(self.email_field)
+                EC.presence_of_element_located(*self.email_field)
             )
             print("✅ Login page loaded successfully")
         except:
