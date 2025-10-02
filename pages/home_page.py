@@ -34,9 +34,9 @@ class HomePage:
         try:
             WebDriverWait(self.driver, 15).until(
                 EC.any_of(
-                    EC.presence_of_element_located((By.CLASS_NAME, "board-header")),
-                    EC.presence_of_element_located((By.CLASS_NAME, "js-add-list")),
-                    EC.presence_of_element_located((By.XPATH, "//i[@class='fa fa-plus']"))
+                    EC.presence_of_element_located(*self.list),
+                    EC.presence_of_element_located(*self.name_list),
+                    EC.presence_of_element_located(*self.save_button)
                 )
             )
         except:
