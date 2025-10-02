@@ -51,6 +51,11 @@ class LoginPage:
         
 
     def login_as_valid_user(self, username, password):
+        # Wait a bit for page to be fully loaded
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.TAG_NAME, "body"))
+        )
+        
         # Find email field using flexible selectors
         email_selectors = [
             (By.ID, "at-field-username_and_email"),
